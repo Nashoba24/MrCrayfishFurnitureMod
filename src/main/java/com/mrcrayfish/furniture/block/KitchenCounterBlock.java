@@ -161,11 +161,11 @@ public class KitchenCounterBlock extends FurnitureHorizontalBlock
         @Override
         public String toString()
         {
-            return this.getName();
+            return this.func_176610_l();
         }
 
         @Override
-        public String getName()
+        public String func_176610_l()
         {
             return this.id;
         }

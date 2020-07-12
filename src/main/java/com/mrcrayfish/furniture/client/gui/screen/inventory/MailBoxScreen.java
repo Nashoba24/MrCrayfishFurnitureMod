@@ -1,5 +1,6 @@
 package com.mrcrayfish.furniture.client.gui.screen.inventory;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mrcrayfish.furniture.Reference;
 import com.mrcrayfish.furniture.client.gui.screen.MailBoxSettingsScreen;
@@ -26,36 +27,36 @@ public class MailBoxScreen extends ContainerScreen<MailBoxContainer>
     }
 
     @Override
-    protected void init()
+    protected void func_231160_c_()
     {
-        super.init();
-        this.addButton(new IconButton(this.guiLeft + this.xSize + 2, this.guiTop + 17, I18n.format("gui.button.cfm.lock"), button -> {
-            this.minecraft.displayGuiScreen(new MailBoxSettingsScreen(this.container.getMailBoxTileEntity()));
+        super.func_231160_c_();
+        this.func_230480_a_(new IconButton(this.guiLeft + this.xSize + 2, this.guiTop + 17, I18n.format("gui.button.cfm.lock"), button -> {
+            this.field_230706_i_.displayGuiScreen(new MailBoxSettingsScreen(this.container.getMailBoxTileEntity()));
         }, ICONS_TEXTURE, 48, 0));
     }
 
     @Override
-    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
+    protected void func_230450_a_(MatrixStack mStack, float partialTicks, int mouseX, int mouseY)
     {
         RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-        this.minecraft.getTextureManager().bindTexture(GUI_TEXTURE);
-        int startX = (this.width - this.xSize) / 2;
-        int startY = (this.height - this.ySize) / 2;
-        this.blit(startX, startY, 0, 0, this.xSize, this.ySize);
+        this.field_230706_i_.getTextureManager().bindTexture(GUI_TEXTURE);
+        int startX = (this.field_230708_k_ - this.xSize) / 2;
+        int startY = (this.field_230709_l_ - this.ySize) / 2;
+        this.func_238474_b_(mStack, startX, startY, 0, 0, this.xSize, this.ySize);
     }
 
     @Override
-    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
+    protected void func_230451_b_(MatrixStack mStack, int mouseX, int mouseY)
     {
-        this.font.drawString(this.title.getFormattedText(), 8.0F, 6.0F, 0x404040);
-        this.font.drawString(this.playerInventory.getDisplayName().getFormattedText(), 8.0F, (float) (this.ySize - 96 + 2), 0x404040);
+        this.field_230712_o_.func_238421_b_(mStack, this.field_230704_d_.getString(), 8.0F, 6.0F, 0x404040);
+        this.field_230712_o_.func_238421_b_(mStack, this.playerInventory.getDisplayName().getString(), 8.0F, (float) (this.ySize - 96 + 2), 0x404040);
     }
 
     @Override
-    public void render(int mouseX, int mouseY, float partialTicks)
+    public void func_230430_a_(MatrixStack mStack, int mouseX, int mouseY, float partialTicks)
     {
-        this.renderBackground();
-        super.render(mouseX, mouseY, partialTicks);
-        this.renderHoveredToolTip(mouseX, mouseY);
+        this.func_230446_a_(mStack);
+        super.func_230430_a_(mStack, mouseX, mouseY, partialTicks);
+        this.func_230459_a_(mStack, mouseX, mouseY);
     }
 }

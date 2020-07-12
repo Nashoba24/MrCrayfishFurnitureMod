@@ -1,5 +1,6 @@
 package com.mrcrayfish.furniture.client.gui.screen.inventory;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mrcrayfish.furniture.Reference;
 import com.mrcrayfish.furniture.client.MailBoxEntry;
@@ -61,16 +62,16 @@ public class PostBoxScreen extends ContainerScreen<PostBoxContainer>
     }
 
     @Override
-    protected void init()
+    protected void func_231160_c_()
     {
-        super.init();
-        this.searchField = new TextFieldWidget(this.font, this.guiLeft + 22, this.guiTop + 19, 101, 9, I18n.format("gui.cfm.post_box.search"));
+        super.func_231160_c_();
+        this.searchField = new TextFieldWidget(this.field_230712_o_, this.guiLeft + 22, this.guiTop + 19, 101, 9, ITextComponent.func_241827_a_(I18n.format("gui.cfm.post_box.search")));
         this.searchField.setEnableBackgroundDrawing(false);
         this.searchField.setMaxStringLength(32);
         this.searchField.setTextColor(16777215);
-        this.children.add(this.searchField);
-        this.btnSend = this.addButton(new IconButton(this.guiLeft + 147, this.guiTop + 53, I18n.format("gui.button.cfm.send_mail"), this::sendMail, ICONS_TEXTURE, 32, 0));
-        this.btnSend.active = false;
+        this.field_230705_e_.add(this.searchField);
+        this.btnSend = this.func_230480_a_(new IconButton(this.guiLeft + 147, this.guiTop + 53, I18n.format("gui.button.cfm.send_mail"), this::sendMail, ICONS_TEXTURE, 32, 0));
+        this.btnSend.field_230693_o_ = false;
         PacketHandler.instance.sendToServer(new MessageRequestMailBoxes());
     }
 
@@ -83,40 +84,40 @@ public class PostBoxScreen extends ContainerScreen<PostBoxContainer>
     }
 
     @Override
-    public void tick()
+    public void func_231023_e_()
     {
-        super.tick();
+        super.func_231023_e_();
         this.searchField.tick();
-        this.btnSend.active = this.selected != null && !this.container.getMail().isEmpty();
+        this.btnSend.field_230693_o_ = this.selected != null && !this.container.getMail().isEmpty();
     }
 
     @Override
-    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
+    protected void func_230450_a_(MatrixStack mStack, float partialTicks, int mouseX, int mouseY)
     {
         RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-        this.minecraft.getTextureManager().bindTexture(GUI_TEXTURE);
-        int startX = (this.width - this.xSize) / 2;
-        int startY = (this.height - this.ySize) / 2;
-        this.blit(startX, startY, 0, 0, this.xSize, this.ySize);
+        this.field_230706_i_.getTextureManager().bindTexture(GUI_TEXTURE);
+        int startX = (this.field_230708_k_ - this.xSize) / 2;
+        int startY = (this.field_230709_l_ - this.ySize) / 2;
+        this.func_238474_b_(mStack, startX, startY, 0, 0, this.xSize, this.ySize);
 
         if(this.container.getMail().isEmpty())
         {
-            this.blit(startX + 149, startY + 33, 116, 202, 16, 16);
+            this.func_238474_b_(mStack, startX + 149, startY + 33, 116, 202, 16, 16);
         }
 
-        this.searchField.render(mouseX, mouseY, partialTicks);
+        this.searchField.func_230430_a_(mStack, mouseX, mouseY, partialTicks);
     }
 
     @Override
-    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
+    protected void func_230451_b_(MatrixStack mStack, int mouseX, int mouseY)
     {
-        this.font.drawString(this.title.getFormattedText(), 8.0F, 6.0F, 0x404040);
-        this.font.drawString(this.playerInventory.getDisplayName().getFormattedText(), 8.0F, (float) (this.ySize - 96 + 2), 0x404040);
+        this.field_230712_o_.func_238421_b_(mStack, this.field_230704_d_.getString(), 8.0F, 6.0F, 0x404040);
+        this.field_230712_o_.func_238421_b_(mStack, this.playerInventory.getDisplayName().getString(), 8.0F, (float) (this.ySize - 96 + 2), 0x404040);
 
-        this.minecraft.getTextureManager().bindTexture(GUI_TEXTURE);
+        this.field_230706_i_.getTextureManager().bindTexture(GUI_TEXTURE);
         int scrollBarY = this.getScrollBarY(mouseY);
         int scrollBarUOffset = this.getMaxScroll() <= 0 ? SCROLL_BAR_WIDTH : 0;
-        this.blit(128, 32 + scrollBarY, 116 + scrollBarUOffset, 187, SCROLL_BAR_WIDTH, SCROLL_BAR_HEIGHT);
+        this.func_238474_b_(mStack, 128, 32 + scrollBarY, 116 + scrollBarUOffset, 187, SCROLL_BAR_WIDTH, SCROLL_BAR_HEIGHT);
 
         GL11.glEnable(GL11.GL_SCISSOR_TEST);
         {
@@ -136,21 +137,21 @@ public class PostBoxScreen extends ContainerScreen<PostBoxContainer>
                 RenderSystem.translatef(0, i * ITEM_HEIGHT, 0);
 
                 MailBoxEntry entry = this.filteredMailBoxList.get(i);
-                this.minecraft.getTextureManager().bindTexture(GUI_TEXTURE);
+                this.field_230706_i_.getTextureManager().bindTexture(GUI_TEXTURE);
 
                 boolean isSelected = entry == selected;
-                this.blit(0, 0, 0, 211 - (isSelected ? ITEM_HEIGHT : 0), ITEM_WIDTH, ITEM_HEIGHT);
+                this.func_238474_b_(mStack, 0, 0, 0, 211 - (isSelected ? ITEM_HEIGHT : 0), ITEM_WIDTH, ITEM_HEIGHT);
 
                 if(isSelected)
                 {
-                    this.blit(ITEM_WIDTH - 20, 5, 140, 187, 14, 12);
-                    this.font.drawString(TextFormatting.BOLD + entry.getName(), 3, 3, 16777045);
-                    this.font.drawString(entry.getOwnerName(), 3, 13, 0xFFFFFF);
+                    this.func_238474_b_(mStack, ITEM_WIDTH - 20, 5, 140, 187, 14, 12);
+                    this.field_230712_o_.func_238421_b_(mStack, TextFormatting.BOLD + entry.getName(), 3, 3, 16777045);
+                    this.field_230712_o_.func_238421_b_(mStack, entry.getOwnerName(), 3, 13, 0xFFFFFF);
                 }
                 else
                 {
-                    this.font.drawString(entry.getName(), 3, 3, 0xFFFFFF);
-                    this.font.drawString(entry.getOwnerName(), 3, 13, 0x777777);
+                    this.field_230712_o_.func_238421_b_(mStack, entry.getName(), 3, 3, 0xFFFFFF);
+                    this.field_230712_o_.func_238421_b_(mStack, entry.getOwnerName(), 3, 13, 0x777777);
                 }
 
                 RenderSystem.popMatrix();
@@ -160,15 +161,15 @@ public class PostBoxScreen extends ContainerScreen<PostBoxContainer>
     }
 
     @Override
-    public void render(int mouseX, int mouseY, float partialTicks)
+    public void func_230430_a_(MatrixStack mStack, int mouseX, int mouseY, float partialTicks)
     {
-        this.renderBackground();
-        super.render(mouseX, mouseY, partialTicks);
-        this.renderHoveredToolTip(mouseX, mouseY);
+        this.func_230446_a_(mStack);
+        super.func_230430_a_(mStack, mouseX, mouseY, partialTicks);
+        this.func_230459_a_(mStack, mouseX, mouseY);
     }
 
     @Override
-    public boolean mouseClicked(double mouseX, double mouseY, int button)
+    public boolean func_231044_a_(double mouseX, double mouseY, int button)
     {
         if(RenderUtil.isMouseInArea((int) mouseX, (int) mouseY, this.guiLeft + 8, this.guiTop + 32, 116, 57))
         {
@@ -185,22 +186,22 @@ public class PostBoxScreen extends ContainerScreen<PostBoxContainer>
         {
             this.pressedMouseY = (int) mouseY;
         }
-        return super.mouseClicked(mouseX, mouseY, button);
+        return super.func_231044_a_(mouseX, mouseY, button);
     }
 
     @Override
-    public boolean mouseReleased(double mouseX, double mouseY, int button)
+    public boolean func_231048_c_(double mouseX, double mouseY, int button)
     {
         if(this.pressedMouseY != -1 && button == GLFW_MOUSE_BUTTON_LEFT)
         {
             this.scroll = (int) (this.getMaxScroll() * (this.getScrollBarY((int) mouseY) / (double) (LIST_HEIGHT - SCROLL_BAR_HEIGHT)) + 0.5);
             this.pressedMouseY = -1;
         }
-        return super.mouseReleased(mouseX, mouseY, button);
+        return super.func_231048_c_(mouseX, mouseY, button);
     }
 
     @Override
-    public boolean mouseScrolled(double mouseX, double mouseY, double speed)
+    public boolean func_231043_a_(double mouseX, double mouseY, double speed)
     {
         if(RenderUtil.isMouseInArea((int) mouseX, (int) mouseY, this.guiLeft + 8, this.guiTop + 32, 116, 57))
         {
@@ -211,10 +212,10 @@ public class PostBoxScreen extends ContainerScreen<PostBoxContainer>
     }
 
     @Override
-    public boolean charTyped(char c, int code)
+    public boolean func_231042_a_(char c, int code)
     {
         String s = this.searchField.getText();
-        if(this.searchField.charTyped(c, code))
+        if(this.searchField.func_231042_a_(c, code))
         {
             if(!Objects.equals(s, this.searchField.getText()))
             {
@@ -226,10 +227,10 @@ public class PostBoxScreen extends ContainerScreen<PostBoxContainer>
     }
 
     @Override
-    public boolean keyPressed(int key, int scanCode, int mods)
+    public boolean func_231046_a_(int key, int scanCode, int mods)
     {
         String s = this.searchField.getText();
-        if(this.searchField.keyPressed(key, scanCode, mods))
+        if(this.searchField.func_231046_a_(key, scanCode, mods))
         {
             if(!Objects.equals(s, this.searchField.getText()))
             {
@@ -237,7 +238,7 @@ public class PostBoxScreen extends ContainerScreen<PostBoxContainer>
             }
             return true;
         }
-        return this.searchField.isFocused() && this.searchField.getVisible() && key != GLFW_KEY_ESCAPE || super.keyPressed(key, scanCode, mods);
+        return this.searchField.func_230999_j_() && this.searchField.getVisible() && key != GLFW_KEY_ESCAPE || super.func_231046_a_(key, scanCode, mods);
     }
 
     private void updateMailBoxList()

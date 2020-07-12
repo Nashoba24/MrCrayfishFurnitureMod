@@ -28,9 +28,9 @@ import java.util.function.Function;
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModBlocks
 {
-    public static final Material WOOD = new Material(MaterialColor.WOOD, false, false, false, false, true, true, false, PushReaction.NORMAL);
-    public static final Material STONE = new Material(MaterialColor.STONE, false, false, false, false, false, true, false, PushReaction.NORMAL);
-    public static final Material WOOL = new Material(MaterialColor.WOOL, false, false, false, false, false, true, false, PushReaction.NORMAL);
+    public static final Material WOOD = new Material(MaterialColor.WOOD, false, false, false, false, true, false, PushReaction.NORMAL);
+    public static final Material STONE = new Material(MaterialColor.STONE, false, false, false, false, true, false, PushReaction.NORMAL);
+    public static final Material WOOL = new Material(MaterialColor.WOOL, false, false, false, false, true, false, PushReaction.NORMAL);
 
     private static final List<Block> BLOCKS = new ArrayList<>();
     private static final List<Item> ITEMS = new ArrayList<>();
@@ -41,10 +41,10 @@ public class ModBlocks
     public static final Block TABLE_JUNGLE = register(Names.Block.TABLE_JUNGLE, new TableBlock(Block.Properties.create(WOOD).hardnessAndResistance(0.5F).sound(SoundType.WOOD)));
     public static final Block TABLE_ACACIA = register(Names.Block.TABLE_ACACIA, new TableBlock(Block.Properties.create(WOOD).hardnessAndResistance(0.5F).sound(SoundType.WOOD)));
     public static final Block TABLE_DARK_OAK = register(Names.Block.TABLE_DARK_OAK, new TableBlock(Block.Properties.create(WOOD).hardnessAndResistance(0.5F).sound(SoundType.WOOD)));
-    public static final Block TABLE_STONE = register(Names.Block.TABLE_STONE, new TableBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE)));
-    public static final Block TABLE_GRANITE = register(Names.Block.TABLE_GRANITE, new TableBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE)));
-    public static final Block TABLE_DIORITE = register(Names.Block.TABLE_DIORITE, new TableBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE)));
-    public static final Block TABLE_ANDESITE = register(Names.Block.TABLE_ANDESITE, new TableBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE)));
+    public static final Block TABLE_STONE = register(Names.Block.TABLE_STONE, new TableBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE)));
+    public static final Block TABLE_GRANITE = register(Names.Block.TABLE_GRANITE, new TableBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE)));
+    public static final Block TABLE_DIORITE = register(Names.Block.TABLE_DIORITE, new TableBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE)));
+    public static final Block TABLE_ANDESITE = register(Names.Block.TABLE_ANDESITE, new TableBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE)));
     public static final Block TABLE_STRIPPED_OAK = register(Names.Block.TABLE_STRIPPED_OAK, new TableBlock(Block.Properties.create(WOOD).hardnessAndResistance(0.5F).sound(SoundType.WOOD)));
     public static final Block TABLE_STRIPPED_SPRUCE = register(Names.Block.TABLE_STRIPPED_SPRUCE, new TableBlock(Block.Properties.create(WOOD).hardnessAndResistance(0.5F).sound(SoundType.WOOD)));
     public static final Block TABLE_STRIPPED_BIRCH = register(Names.Block.TABLE_STRIPPED_BIRCH, new TableBlock(Block.Properties.create(WOOD).hardnessAndResistance(0.5F).sound(SoundType.WOOD)));
@@ -57,10 +57,10 @@ public class ModBlocks
     public static final Block CHAIR_JUNGLE = register(Names.Block.CHAIR_JUNGLE, new ChairBlock(Block.Properties.create(WOOD).hardnessAndResistance(0.5F).sound(SoundType.WOOD)));
     public static final Block CHAIR_ACACIA = register(Names.Block.CHAIR_ACACIA, new ChairBlock(Block.Properties.create(WOOD).hardnessAndResistance(0.5F).sound(SoundType.WOOD)));
     public static final Block CHAIR_DARK_OAK = register(Names.Block.CHAIR_DARK_OAK, new ChairBlock(Block.Properties.create(WOOD).hardnessAndResistance(0.5F).sound(SoundType.WOOD)));
-    public static final Block CHAIR_STONE = register(Names.Block.CHAIR_STONE, new ChairBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE)));
-    public static final Block CHAIR_GRANITE = register(Names.Block.CHAIR_GRANITE, new ChairBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE)));
-    public static final Block CHAIR_DIORITE = register(Names.Block.CHAIR_DIORITE, new ChairBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE)));
-    public static final Block CHAIR_ANDESITE = register(Names.Block.CHAIR_ANDESITE, new ChairBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE)));
+    public static final Block CHAIR_STONE = register(Names.Block.CHAIR_STONE, new ChairBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE)));
+    public static final Block CHAIR_GRANITE = register(Names.Block.CHAIR_GRANITE, new ChairBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE)));
+    public static final Block CHAIR_DIORITE = register(Names.Block.CHAIR_DIORITE, new ChairBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE)));
+    public static final Block CHAIR_ANDESITE = register(Names.Block.CHAIR_ANDESITE, new ChairBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE)));
     public static final Block CHAIR_STRIPPED_OAK = register(Names.Block.CHAIR_STRIPPED_OAK, new ChairBlock(Block.Properties.create(WOOD).hardnessAndResistance(0.5F).sound(SoundType.WOOD)));
     public static final Block CHAIR_STRIPPED_SPRUCE = register(Names.Block.CHAIR_STRIPPED_SPRUCE, new ChairBlock(Block.Properties.create(WOOD).hardnessAndResistance(0.5F).sound(SoundType.WOOD)));
     public static final Block CHAIR_STRIPPED_BIRCH = register(Names.Block.CHAIR_STRIPPED_BIRCH, new ChairBlock(Block.Properties.create(WOOD).hardnessAndResistance(0.5F).sound(SoundType.WOOD)));
@@ -73,10 +73,10 @@ public class ModBlocks
     public static final Block COFFEE_TABLE_JUNGLE = register(Names.Block.COFFEE_TABLE_JUNGLE, new CoffeeTableBlock(Block.Properties.create(WOOD).hardnessAndResistance(0.5F).sound(SoundType.WOOD)));
     public static final Block COFFEE_TABLE_ACACIA = register(Names.Block.COFFEE_TABLE_ACACIA, new CoffeeTableBlock(Block.Properties.create(WOOD).hardnessAndResistance(0.5F).sound(SoundType.WOOD)));
     public static final Block COFFEE_TABLE_DARK_OAK = register(Names.Block.COFFEE_TABLE_DARK_OAK, new CoffeeTableBlock(Block.Properties.create(WOOD).hardnessAndResistance(0.5F).sound(SoundType.WOOD)));
-    public static final Block COFFEE_TABLE_STONE = register(Names.Block.COFFEE_TABLE_STONE, new CoffeeTableBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE)));
-    public static final Block COFFEE_TABLE_GRANITE = register(Names.Block.COFFEE_TABLE_GRANITE, new CoffeeTableBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE)));
-    public static final Block COFFEE_TABLE_DIORITE = register(Names.Block.COFFEE_TABLE_DIORITE, new CoffeeTableBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE)));
-    public static final Block COFFEE_TABLE_ANDESITE = register(Names.Block.COFFEE_TABLE_ANDESITE, new CoffeeTableBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE)));
+    public static final Block COFFEE_TABLE_STONE = register(Names.Block.COFFEE_TABLE_STONE, new CoffeeTableBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE)));
+    public static final Block COFFEE_TABLE_GRANITE = register(Names.Block.COFFEE_TABLE_GRANITE, new CoffeeTableBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE)));
+    public static final Block COFFEE_TABLE_DIORITE = register(Names.Block.COFFEE_TABLE_DIORITE, new CoffeeTableBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE)));
+    public static final Block COFFEE_TABLE_ANDESITE = register(Names.Block.COFFEE_TABLE_ANDESITE, new CoffeeTableBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE)));
     public static final Block COFFEE_TABLE_STRIPPED_OAK = register(Names.Block.COFFEE_TABLE_STRIPPED_OAK, new CoffeeTableBlock(Block.Properties.create(WOOD).hardnessAndResistance(0.5F).sound(SoundType.WOOD)));
     public static final Block COFFEE_TABLE_STRIPPED_SPRUCE = register(Names.Block.COFFEE_TABLE_STRIPPED_SPRUCE, new CoffeeTableBlock(Block.Properties.create(WOOD).hardnessAndResistance(0.5F).sound(SoundType.WOOD)));
     public static final Block COFFEE_TABLE_STRIPPED_BIRCH = register(Names.Block.COFFEE_TABLE_STRIPPED_BIRCH, new CoffeeTableBlock(Block.Properties.create(WOOD).hardnessAndResistance(0.5F).sound(SoundType.WOOD)));
@@ -89,10 +89,10 @@ public class ModBlocks
     public static final Block CABINET_JUNGLE = register(Names.Block.CABINET_JUNGLE, new CabinetBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD)));
     public static final Block CABINET_ACACIA = register(Names.Block.CABINET_ACACIA, new CabinetBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD)));
     public static final Block CABINET_DARK_OAK = register(Names.Block.CABINET_DARK_OAK, new CabinetBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD)));
-    public static final Block CABINET_STONE = register(Names.Block.CABINET_STONE, new CabinetBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE)));
-    public static final Block CABINET_GRANITE = register(Names.Block.CABINET_GRANITE, new CabinetBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE)));
-    public static final Block CABINET_DIORITE = register(Names.Block.CABINET_DIORITE, new CabinetBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE)));
-    public static final Block CABINET_ANDESITE = register(Names.Block.CABINET_ANDESITE, new CabinetBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE)));
+    public static final Block CABINET_STONE = register(Names.Block.CABINET_STONE, new CabinetBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE)));
+    public static final Block CABINET_GRANITE = register(Names.Block.CABINET_GRANITE, new CabinetBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE)));
+    public static final Block CABINET_DIORITE = register(Names.Block.CABINET_DIORITE, new CabinetBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE)));
+    public static final Block CABINET_ANDESITE = register(Names.Block.CABINET_ANDESITE, new CabinetBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE)));
     public static final Block CABINET_STRIPPED_OAK = register(Names.Block.CABINET_STRIPPED_OAK, new CabinetBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD)));
     public static final Block CABINET_STRIPPED_SPRUCE = register(Names.Block.CABINET_STRIPPED_SPRUCE, new CabinetBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD)));
     public static final Block CABINET_STRIPPED_BIRCH = register(Names.Block.CABINET_STRIPPED_BIRCH, new CabinetBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD)));
@@ -105,10 +105,10 @@ public class ModBlocks
     public static final Block BEDSIDE_CABINET_JUNGLE = register(Names.Block.BEDSIDE_CABINET_JUNGLE, new BedsideCabinetBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD)));
     public static final Block BEDSIDE_CABINET_ACACIA = register(Names.Block.BEDSIDE_CABINET_ACACIA, new BedsideCabinetBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD)));
     public static final Block BEDSIDE_CABINET_DARK_OAK = register(Names.Block.BEDSIDE_CABINET_DARK_OAK, new BedsideCabinetBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD)));
-    public static final Block BEDSIDE_CABINET_STONE = register(Names.Block.BEDSIDE_CABINET_STONE, new BedsideCabinetBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE)));
-    public static final Block BEDSIDE_CABINET_GRANITE = register(Names.Block.BEDSIDE_CABINET_GRANITE, new BedsideCabinetBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE)));
-    public static final Block BEDSIDE_CABINET_DIORITE = register(Names.Block.BEDSIDE_CABINET_DIORITE, new BedsideCabinetBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE)));
-    public static final Block BEDSIDE_CABINET_ANDESITE = register(Names.Block.BEDSIDE_CABINET_ANDESITE, new BedsideCabinetBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE)));
+    public static final Block BEDSIDE_CABINET_STONE = register(Names.Block.BEDSIDE_CABINET_STONE, new BedsideCabinetBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE)));
+    public static final Block BEDSIDE_CABINET_GRANITE = register(Names.Block.BEDSIDE_CABINET_GRANITE, new BedsideCabinetBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE)));
+    public static final Block BEDSIDE_CABINET_DIORITE = register(Names.Block.BEDSIDE_CABINET_DIORITE, new BedsideCabinetBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE)));
+    public static final Block BEDSIDE_CABINET_ANDESITE = register(Names.Block.BEDSIDE_CABINET_ANDESITE, new BedsideCabinetBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE)));
     public static final Block BEDSIDE_CABINET_STRIPPED_OAK = register(Names.Block.BEDSIDE_CABINET_STRIPPED_OAK, new BedsideCabinetBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD)));
     public static final Block BEDSIDE_CABINET_STRIPPED_SPRUCE = register(Names.Block.BEDSIDE_CABINET_STRIPPED_SPRUCE, new BedsideCabinetBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD)));
     public static final Block BEDSIDE_CABINET_STRIPPED_BIRCH = register(Names.Block.BEDSIDE_CABINET_STRIPPED_BIRCH, new BedsideCabinetBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD)));
@@ -121,10 +121,10 @@ public class ModBlocks
     public static final Block DESK_JUNGLE = register(Names.Block.DESK_JUNGLE, new DeskBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD), DeskBlock.MaterialType.JUNGLE));
     public static final Block DESK_ACACIA = register(Names.Block.DESK_ACACIA, new DeskBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD), DeskBlock.MaterialType.ACACIA));
     public static final Block DESK_DARK_OAK = register(Names.Block.DESK_DARK_OAK, new DeskBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD), DeskBlock.MaterialType.DARK_OAK));
-    public static final Block DESK_STONE = register(Names.Block.DESK_STONE, new DeskBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE), DeskBlock.MaterialType.STONE));
-    public static final Block DESK_GRANITE = register(Names.Block.DESK_GRANITE, new DeskBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE), DeskBlock.MaterialType.GRANITE));
-    public static final Block DESK_DIORITE = register(Names.Block.DESK_DIORITE, new DeskBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE), DeskBlock.MaterialType.DIORITE));
-    public static final Block DESK_ANDESITE = register(Names.Block.DESK_ANDESITE, new DeskBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE), DeskBlock.MaterialType.ANDESITE));
+    public static final Block DESK_STONE = register(Names.Block.DESK_STONE, new DeskBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE), DeskBlock.MaterialType.STONE));
+    public static final Block DESK_GRANITE = register(Names.Block.DESK_GRANITE, new DeskBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE), DeskBlock.MaterialType.GRANITE));
+    public static final Block DESK_DIORITE = register(Names.Block.DESK_DIORITE, new DeskBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE), DeskBlock.MaterialType.DIORITE));
+    public static final Block DESK_ANDESITE = register(Names.Block.DESK_ANDESITE, new DeskBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE), DeskBlock.MaterialType.ANDESITE));
     public static final Block DESK_STRIPPED_OAK = register(Names.Block.DESK_STRIPPED_OAK, new DeskBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD), DeskBlock.MaterialType.STRIPPED_OAK));
     public static final Block DESK_STRIPPED_SPRUCE = register(Names.Block.DESK_STRIPPED_SPRUCE, new DeskBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD), DeskBlock.MaterialType.STRIPPED_BIRCH));
     public static final Block DESK_STRIPPED_BIRCH = register(Names.Block.DESK_STRIPPED_BIRCH, new DeskBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD), DeskBlock.MaterialType.STRIPPED_SPRUCE));
@@ -137,10 +137,10 @@ public class ModBlocks
     public static final Block DESK_CABINET_JUNGLE = register(Names.Block.DESK_CABINET_JUNGLE, new DeskCabinetBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD), DeskBlock.MaterialType.JUNGLE));
     public static final Block DESK_CABINET_ACACIA = register(Names.Block.DESK_CABINET_ACACIA, new DeskCabinetBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD), DeskBlock.MaterialType.ACACIA));
     public static final Block DESK_CABINET_DARK_OAK = register(Names.Block.DESK_CABINET_DARK_OAK, new DeskCabinetBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD), DeskBlock.MaterialType.DARK_OAK));
-    public static final Block DESK_CABINET_STONE = register(Names.Block.DESK_CABINET_STONE, new DeskCabinetBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE), DeskBlock.MaterialType.STONE));
-    public static final Block DESK_CABINET_GRANITE = register(Names.Block.DESK_CABINET_GRANITE, new DeskCabinetBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE), DeskBlock.MaterialType.GRANITE));
-    public static final Block DESK_CABINET_DIORITE = register(Names.Block.DESK_CABINET_DIORITE, new DeskCabinetBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE), DeskBlock.MaterialType.DIORITE));
-    public static final Block DESK_CABINET_ANDESITE = register(Names.Block.DESK_CABINET_ANDESITE, new DeskCabinetBlock(Block.Properties.create(STONE).hardnessAndResistance(1.0F).sound(SoundType.STONE), DeskBlock.MaterialType.ANDESITE));
+    public static final Block DESK_CABINET_STONE = register(Names.Block.DESK_CABINET_STONE, new DeskCabinetBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE), DeskBlock.MaterialType.STONE));
+    public static final Block DESK_CABINET_GRANITE = register(Names.Block.DESK_CABINET_GRANITE, new DeskCabinetBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE), DeskBlock.MaterialType.GRANITE));
+    public static final Block DESK_CABINET_DIORITE = register(Names.Block.DESK_CABINET_DIORITE, new DeskCabinetBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE), DeskBlock.MaterialType.DIORITE));
+    public static final Block DESK_CABINET_ANDESITE = register(Names.Block.DESK_CABINET_ANDESITE, new DeskCabinetBlock(Block.Properties.create(STONE).func_235861_h_().hardnessAndResistance(1.0F).sound(SoundType.STONE), DeskBlock.MaterialType.ANDESITE));
     public static final Block DESK_CABINET_STRIPPED_OAK = register(Names.Block.DESK_CABINET_STRIPPED_OAK, new DeskCabinetBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD), DeskBlock.MaterialType.STRIPPED_OAK));
     public static final Block DESK_CABINET_STRIPPED_SPRUCE = register(Names.Block.DESK_CABINET_STRIPPED_SPRUCE, new DeskCabinetBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD), DeskBlock.MaterialType.STRIPPED_BIRCH));
     public static final Block DESK_CABINET_STRIPPED_BIRCH = register(Names.Block.DESK_CABINET_STRIPPED_BIRCH, new DeskCabinetBlock(Block.Properties.create(WOOD).hardnessAndResistance(1.0F).sound(SoundType.WOOD), DeskBlock.MaterialType.STRIPPED_SPRUCE));

@@ -9,12 +9,12 @@ import com.mrcrayfish.furniture.Reference;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ActiveRenderInfo;
-import net.minecraft.client.renderer.Matrix4f;
 import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.vector.Matrix4f;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.DrawHighlightEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -81,11 +81,11 @@ public class ClientEvents
 
     private static void drawVoxelShape(MatrixStack matrixStack, IVertexBuilder builder, VoxelShape shape, double posX, double posY, double posZ, float red, float green, float blue, float alpha)
     {
-        Matrix4f matrix4f = matrixStack.func_227866_c_().func_227870_a_();
+        Matrix4f matrix4f = matrixStack.getLast().getMatrix();
         shape.forEachEdge((x1, y1, z1, x2, y2, z2) ->
         {
-            builder.func_227888_a_(matrix4f, (float) (x1 + posX), (float) (y1 + posY), (float) (z1 + posZ)).func_227885_a_(red, green, blue, alpha).endVertex();
-            builder.func_227888_a_(matrix4f, (float) (x2 + posX), (float) (y2 + posY), (float) (z2 + posZ)).func_227885_a_(red, green, blue, alpha).endVertex();
+            builder.pos(matrix4f, (float) (x1 + posX), (float) (y1 + posY), (float) (z1 + posZ)).color(red, green, blue, alpha).endVertex();
+            builder.pos(matrix4f, (float) (x2 + posX), (float) (y2 + posY), (float) (z2 + posZ)).color(red, green, blue, alpha).endVertex();
         });
     }
 }

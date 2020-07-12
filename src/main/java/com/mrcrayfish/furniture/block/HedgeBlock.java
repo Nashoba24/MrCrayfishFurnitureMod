@@ -132,7 +132,7 @@ public class HedgeBlock extends FurnitureWaterloggedBlock
         {
             return true;
         }
-        return offsetState.func_224755_d(world, offsetPos, direction.getOpposite());
+        return offsetState.isSolidSide(world, offsetPos, direction.getOpposite());
     }
 
     @Override
@@ -143,17 +143,6 @@ public class HedgeBlock extends FurnitureWaterloggedBlock
         builder.add(EAST);
         builder.add(SOUTH);
         builder.add(WEST);
-    }
-
-    /*public boolean causesSuffocation(BlockState state, IBlockReader worldIn, BlockPos pos)
-    {
-        return false;
-    }*/
-
-    @Override //causesSuffocation?
-    public boolean func_229869_c_(BlockState p_229869_1_, IBlockReader p_229869_2_, BlockPos p_229869_3_)
-    {
-        return false;
     }
 
     @Deprecated

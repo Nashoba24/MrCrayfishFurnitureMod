@@ -1,5 +1,6 @@
 package com.mrcrayfish.furniture.client.gui.screen;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mrcrayfish.furniture.Reference;
 import com.mrcrayfish.furniture.network.PacketHandler;
@@ -11,6 +12,7 @@ import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
 /**
@@ -34,57 +36,57 @@ public class MailBoxSettingsScreen extends Screen
     }
 
     @Override
-    protected void init()
+    protected void func_231160_c_()
     {
-        int guiLeft = (this.width - this.xSize) / 2;
-        int guiTop = (this.height - this.ySize) / 2;
+        int guiLeft = (this.field_230708_k_ - this.xSize) / 2;
+        int guiTop = (this.field_230709_l_ - this.ySize) / 2;
 
-        this.nameField = new TextFieldWidget(this.font, guiLeft + 8, guiTop + 18, 160, 18, "");
+        this.nameField = new TextFieldWidget(this.field_230712_o_, guiLeft + 8, guiTop + 18, 160, 18, ITextComponent.func_241827_a_(""));
         if(this.mailBoxTileEntity.getMailBoxName() != null)
         {
             this.nameField.setText(this.mailBoxTileEntity.getMailBoxName());
         }
-        this.children.add(this.nameField);
+        this.field_230705_e_.add(this.nameField);
 
-        this.btnSave = this.addButton(new Button(guiLeft + 7, guiTop + 42, 79, 20, I18n.format("gui.button.cfm.save"), button ->
+        this.btnSave = this.func_230480_a_(new Button(guiLeft + 7, guiTop + 42, 79, 20, ITextComponent.func_241827_a_(I18n.format("gui.button.cfm.save")), button ->
         {
             if(this.isValidName())
             {
                 PacketHandler.instance.sendToServer(new MessageSetMailBoxName(mailBoxTileEntity.getId(), this.nameField.getText(), mailBoxTileEntity.getPos()));
             }
         }));
-        this.btnSave.active = false;
+        this.btnSave.field_230693_o_ = false;
 
-        this.addButton(new Button(guiLeft + 91, guiTop + 42, 79, 20, I18n.format("gui.button.cfm.back"), button ->
+        this.func_230480_a_(new Button(guiLeft + 91, guiTop + 42, 79, 20, ITextComponent.func_241827_a_(I18n.format("gui.button.cfm.back")), button ->
         {
             PacketHandler.instance.sendToServer(new MessageOpenMailBox(mailBoxTileEntity.getPos()));
         }));
     }
 
     @Override
-    public void tick()
+    public void func_231023_e_()
     {
-        super.tick();
+        super.func_231023_e_();
         this.nameField.tick();
-        this.btnSave.active = this.isValidName();
+        this.btnSave.field_230693_o_ = this.isValidName();
     }
 
     @Override
-    public void render(int mouseX, int mouseY, float partialTicks)
+    public void func_230430_a_(MatrixStack mStack, int mouseX, int mouseY, float partialTicks)
     {
-        this.renderBackground();
+        this.func_230446_a_(mStack);
 
         RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-        this.minecraft.getTextureManager().bindTexture(GUI_TEXTURE);
-        int startX = (this.width - this.xSize) / 2;
-        int startY = (this.height - this.ySize) / 2;
-        this.blit(startX, startY, 0, 0, this.xSize, this.ySize);
+        this.field_230706_i_.getTextureManager().bindTexture(GUI_TEXTURE);
+        int startX = (this.field_230708_k_ - this.xSize) / 2;
+        int startY = (this.field_230709_l_ - this.ySize) / 2;
+        this.func_238474_b_(mStack, startX, startY, 0, 0, this.xSize, this.ySize);
 
-        super.render(mouseX, mouseY, partialTicks);
+        super.func_230430_a_(mStack, mouseX, mouseY, partialTicks);
 
-        this.font.drawString(this.title.getFormattedText(), startX + 8.0F, startY + 6.0F, 0x404040);
+        this.field_230712_o_.func_238421_b_(mStack, this.field_230704_d_.getString(), startX + 8.0F, startY + 6.0F, 0x404040);
 
-        this.nameField.render(mouseX, mouseY, partialTicks);
+        this.nameField.func_230430_a_(mStack, mouseX, mouseY, partialTicks);
     }
 
     private boolean isValidName()

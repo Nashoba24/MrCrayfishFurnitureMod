@@ -11,21 +11,17 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.DoubleSidedInventory;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.container.ChestContainer;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.AbstractCookingRecipe;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tileentity.ChestTileEntity;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3i;
+import net.minecraft.util.math.vector.Vector3i;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
@@ -346,7 +342,7 @@ public class FreezerTileEntity extends BasicLootTileEntity implements ITickableT
         {
             int splitExp = ExperienceOrbEntity.getXPSplit(count);
             count -= splitExp;
-            player.world.addEntity(new ExperienceOrbEntity(player.world, player.func_226277_ct_(), player.func_226278_cu_() + 0.5, player.func_226281_cx_(), splitExp));
+            player.world.addEntity(new ExperienceOrbEntity(player.world, player.getPosX(), player.getPosY() + 0.5, player.getPosZ(), splitExp));
         }
     }
 
@@ -377,9 +373,9 @@ public class FreezerTileEntity extends BasicLootTileEntity implements ITickableT
     }
 
     @Override
-    public void read(CompoundNBT compound)
+    public void func_230337_a_(BlockState blockState, CompoundNBT compound)
     {
-        super.read(compound);
+        super.func_230337_a_(blockState, compound);
         this.freezeTime = compound.getInt("FreezeTime");
         this.freezeTimeTotal = compound.getInt("FreezeTimeTotal");
         this.fuelTime = compound.getInt("FuelTime");
@@ -485,7 +481,7 @@ public class FreezerTileEntity extends BasicLootTileEntity implements ITickableT
 
     private void playDoorSound(BlockState blockState, SoundEvent soundEvent)
     {
-        Vec3i directionVec = blockState.get(FreezerBlock.DIRECTION).getOpposite().getDirectionVec();
+        Vector3i directionVec = blockState.get(FreezerBlock.DIRECTION).getOpposite().getDirectionVec();
         double x = this.pos.getX() + 0.5D + directionVec.getX() / 2.0D;
         double y = this.pos.getY() + 0.5D + directionVec.getY() / 2.0D;
         double z = this.pos.getZ() + 0.5D + directionVec.getZ() / 2.0D;

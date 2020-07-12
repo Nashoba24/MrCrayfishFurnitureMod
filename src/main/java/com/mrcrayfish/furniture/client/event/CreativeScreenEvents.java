@@ -16,6 +16,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextProperties;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -93,22 +94,22 @@ public class CreativeScreenEvents
                 }
             }, ICONS, 112, 0));
 
-            this.btnScrollUp.visible = false;
-            this.btnScrollDown.visible = false;
-            this.btnEnableAll.visible = false;
-            this.btnDisableAll.visible = false;
+            this.btnScrollUp.field_230694_p_ = false; // visible
+            this.btnScrollDown.field_230694_p_ = false;
+            this.btnEnableAll.field_230694_p_ = false;
+            this.btnDisableAll.field_230694_p_ = false;
 
             this.updateTagButtons();
 
             CreativeScreen screen = (CreativeScreen) event.getGui();
             if(screen.getSelectedTabIndex() == FurnitureMod.GROUP.getIndex())
             {
-                this.btnScrollUp.visible = true;
-                this.btnScrollDown.visible = true;
-                this.btnEnableAll.visible = true;
-                this.btnDisableAll.visible = true;
+                this.btnScrollUp.field_230694_p_ = true;
+                this.btnScrollDown.field_230694_p_ = true;
+                this.btnEnableAll.field_230694_p_ = true;
+                this.btnDisableAll.field_230694_p_ = true;
                 this.viewingFurnitureTab = true;
-                this.buttons.forEach(button -> button.visible = true);
+                this.buttons.forEach(button -> button.field_230694_p_ = true);
                 this.updateItems(screen);
             }
         }
@@ -124,9 +125,9 @@ public class CreativeScreenEvents
         {
             for(Button button : this.buttons)
             {
-                if(button.isMouseOver(event.getMouseX(), event.getMouseY()))
+                if(button.func_231047_b_(event.getMouseX(), event.getMouseY())) // is mouse over
                 {
-                    if(button.mouseClicked(event.getMouseX(), event.getMouseY(), event.getButton()))
+                    if(button.func_231044_a_(event.getMouseX(), event.getMouseY(), event.getButton())) // mouse clicked button
                     {
                         return;
                     }
@@ -167,44 +168,44 @@ public class CreativeScreenEvents
 
             if(screen.getSelectedTabIndex() == FurnitureMod.GROUP.getIndex())
             {
-                this.btnScrollUp.visible = true;
-                this.btnScrollDown.visible = true;
-                this.btnEnableAll.visible = true;
-                this.btnDisableAll.visible = true;
-                this.buttons.forEach(button -> button.visible = true);
+                this.btnScrollUp.field_230694_p_ = true;
+                this.btnScrollDown.field_230694_p_ = true;
+                this.btnEnableAll.field_230694_p_ = true;
+                this.btnDisableAll.field_230694_p_ = true;
+                this.buttons.forEach(button -> button.field_230694_p_ = true);
 
                 /* Render buttons */
                 this.buttons.forEach(button ->
                 {
-                    button.render(event.getMouseX(), event.getMouseY(), event.getRenderPartialTicks());
+                    button.func_230431_b_(event.getMatrixStack(), event.getMouseX(), event.getMouseY(), event.getRenderPartialTicks());
                 });
 
                 /* Render tooltips after so it renders above buttons */
                 this.buttons.forEach(button ->
                 {
-                    if(button.isMouseOver(event.getMouseX(), event.getMouseY()))
+                    if(button.func_231047_b_(event.getMouseX(), event.getMouseY()))
                     {
-                        screen.renderTooltip(button.getCategory().getName(), event.getMouseX(), event.getMouseY());
+                        screen.func_238652_a_(event.getMatrixStack(), button.getCategory().getName(), event.getMouseX(), event.getMouseY()); // render tooltip
                     }
                 });
 
-                if(this.btnEnableAll.isMouseOver(event.getMouseX(), event.getMouseY()))
+                if(this.btnEnableAll.func_231047_b_(event.getMouseX(), event.getMouseY()))
                 {
-                    screen.renderTooltip(this.btnEnableAll.getMessage(), event.getMouseX(), event.getMouseY());
+                    screen.func_238652_a_(event.getMatrixStack(), this.btnEnableAll.func_230458_i_(), event.getMouseX(), event.getMouseY()); // render tooltip
                 }
 
-                if(this.btnDisableAll.isMouseOver(event.getMouseX(), event.getMouseY()))
+                if(this.btnDisableAll.func_231047_b_(event.getMouseX(), event.getMouseY()))
                 {
-                    screen.renderTooltip(this.btnDisableAll.getMessage(), event.getMouseX(), event.getMouseY());
+                    screen.func_238652_a_(event.getMatrixStack(), this.btnDisableAll.func_230458_i_(), event.getMouseX(), event.getMouseY()); // render tooltip
                 }
             }
             else
             {
-                this.btnScrollUp.visible = false;
-                this.btnScrollDown.visible = false;
-                this.btnEnableAll.visible = false;
-                this.btnDisableAll.visible = false;
-                this.buttons.forEach(button -> button.visible = false);
+                this.btnScrollUp.field_230694_p_ = false;
+                this.btnScrollDown.field_230694_p_ = false;
+                this.btnEnableAll.field_230694_p_ = false;
+                this.btnDisableAll.field_230694_p_ = false;
+                this.buttons.forEach(button -> button.field_230694_p_ = false);
             }
         }
     }
@@ -225,8 +226,8 @@ public class CreativeScreenEvents
             TagButton button = new TagButton(this.guiCenterX - 28, this.guiCenterY + 29 * (i - startIndex) + 10, this.filters.get(i), pressable);
             this.buttons.add(button);
         }
-        this.btnScrollUp.active = startIndex > 0;
-        this.btnScrollDown.active = startIndex <= this.filters.size() - 4 - 1;
+        this.btnScrollUp.field_230693_o_ = startIndex > 0;
+        this.btnScrollDown.field_230693_o_ = startIndex <= this.filters.size() - 4 - 1;
     }
 
     private void updateItems(CreativeScreen screen)
@@ -305,9 +306,9 @@ public class CreativeScreenEvents
             return this.icon;
         }
 
-        public String getName()
+        public ITextProperties getName()
         {
-            return I18n.format(this.translationKey);
+            return ITextProperties.func_240652_a_(I18n.format(this.translationKey));
         }
 
         public void setEnabled(boolean enabled)
